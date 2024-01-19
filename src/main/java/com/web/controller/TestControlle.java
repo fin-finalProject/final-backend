@@ -1,5 +1,9 @@
-package src.main.java.com.web.controller;
+package com.web.controller;
+
 
 public class TestControlle {
+	public String Test() {
+		return"";
+	}
 
 }
