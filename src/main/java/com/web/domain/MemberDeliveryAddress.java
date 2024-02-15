@@ -19,11 +19,12 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Data
-@NoArgsConstructor 
-@AllArgsConstructor
+@Setter
+@Getter
 @SequenceGenerator(name="MEMBER_SEQ_GENERATOR", sequenceName="ADDRESS_SEQ", allocationSize = 1)
 @Table(name="MEMBER_DELIVERY_ADR")
 @Entity
@@ -32,7 +33,7 @@ public class MemberDeliveryAddress {
     @Column(name = "ADDR_NUM")
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long addrNum;            // 배송지 번호
-    @ColumnDefault("'배송지'") 
+    @Column(insertable = false, updatable = true, columnDefinition = "VARCHAR(255) DEFAULT '배송지'")
     private String daName;
     private String recipientName;    // 수령인
     private String recipientTel;    // 수령인 연락처
@@ -47,8 +48,7 @@ public class MemberDeliveryAddress {
     }
     
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="MEMBER_NUM") 
+    @JoinColumn(name="MEMBER_NUM")
     @JsonIgnore
     private Member member;
 }
-

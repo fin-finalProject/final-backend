@@ -31,6 +31,6 @@ public class AdminCommentEntity {
 	private String adminComment;
 	@Column(name = "ADMIN_COMMENT_DATE" ,insertable = false, updatable = false , columnDefinition = "date default sysdate")
 	private Date adminCommentDate;	// admin 답변 날짜
-	@Column(name = "LNQUERY_Num") // 1대1문의 번호
+	@Column(name = "INQUERY_Num") // 1대1문의 번호
 	private Long inquiryId;
 }

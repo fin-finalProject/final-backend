@@ -63,6 +63,7 @@ public class BookController {
 	
 	@PostMapping("/testBook3")
 	   public ResponseEntity<Map<String, Object>> testBook3(@RequestBody SendDataDTO dto) {
+		System.out.println(dto);
 	       try {
 	           int display = 10;
 	           URI uri = UriComponentsBuilder
@@ -75,6 +76,7 @@ public class BookController {
 	                   .encode(Charset.forName("UTF-8"))
 	                   .build()
 	                   .toUri();
+	           System.out.println(uri);
 	           RestTemplate restTemplate = new RestTemplate();
 	           // 헤더 추가 위해
 	           RequestEntity<Void> req = RequestEntity
@@ -89,7 +91,6 @@ public class BookController {
 	           Map<String, Object> resultMap = objectMapper.readValue(result.getBody(), new TypeReference<Map<String, Object>>(){});
 	           List<BookDTO> books = objectMapper.convertValue(resultMap.get("items"), new TypeReference<List<BookDTO>>(){});
 	           for(BookDTO book : books) {
-	              System.out.println("//////////////////////////////////////////////////////////////////////////////////////////");
 	              float avg=0;
 	              try {
 	                   float tot = commentRepository.sumOfColumn(book.getIsbn());
@@ -101,7 +102,6 @@ public class BookController {
 	               } catch (Exception e) {
 	                   // 예외 발생 시 처리
 	               }
-	              System.out.println(avg);
 	              book.setStarAvg(avg);
 	           }
 	           int total = objectMapper.readValue(objectMapper.writeValueAsString(resultMap.get("total")), int.class);
@@ -120,6 +120,7 @@ public class BookController {
     // 네이버 책검색 api Detail
     @PostMapping("/testBook4")
     public Map<String, Object> testBook4(@RequestBody SendDataDTO dto) {
+    	System.out.println(dto);
     	int display = 10;
     	URI uri = UriComponentsBuilder
     			.fromUriString("https://openapi.naver.com")
