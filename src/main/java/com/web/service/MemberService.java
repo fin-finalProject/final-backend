@@ -29,8 +29,13 @@ public interface MemberService {
 	public Map<String, Object> findPwd(JoinDTO joinDTO);
 	// 비밀번호 재설정
 	public String editPwd(JoinDTO joinDTO);
+	// 회원 탈퇴
+	public String deleteMember(JoinDTO joinDTO);
 	
-	public Page<Member> getMemberList(Pageable pageable);
-	
+	public Page<Member> getMemberList(Pageable pageable);	
 	public Page<Member> searchMemberNum(Pageable pageable, String term);
+
+	public void deleteMemberInAdmin(Long memberNum);
+	
+
 }
