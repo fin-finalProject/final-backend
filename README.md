@@ -25,10 +25,46 @@
 <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white"> <img src="https://img.shields.io/badge/figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white"> 
 <img src="https://img.shields.io/badge/canva-00C4CC?style=for-the-badge&logo=canva&logoColor=white"> 
 
-## 내가 맡은 역할
-- 프론트: 전체적인 ui 디자인, 소셜로그인, 책 상세 페이지, 장바구니, 주문, 결제, 마이페이지, 관리자 - 회원관리 페이지
-- 백엔드: DB설계, JWT, SpringSecurity, Oauth2, 장바구니, 주문, 주문 상세, 회원검색, 결제(포스원) api
-- 그 외: 깃허브 관리
+## 본인 기여도
+<h3>백엔드</h3>
+
+- DB 설계 40%
+- SpringSecurity 100%
+- Oauth2 100%
+  - 구글, 네이버, 카카오 로그인 api 사용
+- JWT 100%
+  - 멤버ID를 저장한 엑세스 토큰과 리프레시 토큰을 발급해 프론트로 전달
+- 장바구니 100%
+  - 기존 장바구니에 있는 상품은 장바구니에 추가되지 않도록 구현
+- 주문하기 100%
+  - 기본배송지 정보 불러오기
+  - 주문 및 결제 완료시 장바구니에서 해당 상품 삭제
+- 결제하기 100%
+  - 포스원 api 사용 
+- 관리자 기능 35%
+  - 회원관리 100%
+  
+<h3>프론트 엔드</h3>
+
+- 소셜로그인 100%
+- 로그인 35%
+  - 발급된 엑세스토큰을 쿠키로 설정
+- 장바구니 100%
+  - 장바구니 상품 개수 표시/체크박스로 원하는 상품만 주문하기 
+- 주문, 결제 100%
+- 마이페이지 33%
+  - 회원 주문내역 
+- 책 상세 페이지 33%
+- 관리자 35%
+  - 회원관리 페이지
+
+
+
+<h3>그 외 </h3>
+
+- 깃허브 관리 100%
+- ui 디자인 75%
+
 
 
 ## :speaker: 프로젝트 주요 기능 
