@@ -136,9 +136,9 @@ public class OrderServiceImpl implements OrderService{
 		
 		MyOrderPageDTO orderPage = new MyOrderPageDTO();
 		orderPage.setMyOrder(orderDtoList);
-		orderPage.setCount(orderPage.getCount());
-		orderPage.setSize(orderPage.getSize());
-		orderPage.setPage(orderPage.getPage());
+		orderPage.setCount(orderList.getTotalElements());
+		orderPage.setSize(orderList.getSize());
+		orderPage.setPage(orderList.getTotalPages());
 		
 		
 		return orderPage;
