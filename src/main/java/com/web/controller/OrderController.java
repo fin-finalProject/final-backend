@@ -105,7 +105,7 @@ public class OrderController {
     }
     
     @GetMapping("/order/loadMyOrder")
-    public MyOrderPageDTO loadMyOrder(@PageableDefault(size=10, sort="id", direction=Sort.Direction.DESC)Pageable pageable, 
+    public MyOrderPageDTO loadMyOrder(@PageableDefault(size=5, sort="id", direction=Sort.Direction.DESC)Pageable pageable, 
     		@RequestHeader(name = HttpHeaders.AUTHORIZATION, required = false) String token){
     	return orderService.loadMyOrder(pageable, token);
     }
