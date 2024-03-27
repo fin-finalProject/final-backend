@@ -41,19 +41,19 @@ public class CartController {
 	//장바구니 삭제
 	@Transactional
 	@DeleteMapping("/delete/{isbn}")
-	public void deleteBook(@PathVariable String isbn) {
-		cartService.deleteCartitem(isbn);
+	public void deleteBook(@PathVariable String isbn, @RequestHeader(name = HttpHeaders.AUTHORIZATION, required = false) String token) {
+		cartService.deleteCartitem(isbn, token);
 	}
-	
-	//주문 페이지 이동
-//	@GetMapping("/order")
-//	public void orderPage() {
-////		cartService.goToOrder();
-//	}
 	
 	@GetMapping("/count")
 	public int CartItemCount(@RequestHeader(name = HttpHeaders.AUTHORIZATION, required = false) String token) {
 		return cartService.countItem(token);
+	}
+	
+	@Transactional
+	@DeleteMapping("/orderSucceed/delete")
+	public void orderSucceed(@RequestBody List<CartItemDto> cartInfoList, @RequestHeader(name = HttpHeaders.AUTHORIZATION, required = false) String token) {
+		cartService.deleteCartitems(cartInfoList, token);
 	}
 
 }
