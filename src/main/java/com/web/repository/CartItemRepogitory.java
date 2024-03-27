@@ -14,5 +14,7 @@ public interface CartItemRepogitory extends CrudRepository<CartItem, Long> {
 
 	void deleteByIsbn(String isbn);
 
+	void deleteByIsbnAndCartMemberMemberNum(String isbn, Long memberNum);
+
 	
 }

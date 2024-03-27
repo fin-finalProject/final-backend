@@ -39,8 +39,8 @@ public class CartServiceImpl implements CartService {
 	@Override
 	public List<CartItemDto> cartList(String token) {
 		if(tService.existMember(token)) {
-			Member member = tService.getMemberByMemberNum(token);
-			Cart cart = cRepo.findByMember(member);
+			Long memberNum = tService.getMemberNum(token);
+			Cart cart = cRepo.findByMemberMemberNum(memberNum);
 			if(cart == null) {
 				return null;
 			}
@@ -105,10 +105,11 @@ public class CartServiceImpl implements CartService {
 
 
 	@Override
-	public ResponseEntity<String> deleteCartitem(String isbn) {
+	public ResponseEntity<String> deleteCartitem(String isbn, String token) {
 
 		try {
-			itemRepo.deleteByIsbn(isbn);
+			Long memberNum = tService.getMemberNum(token);
+			itemRepo.deleteByIsbnAndCartMemberMemberNum(isbn, memberNum);
 			return ResponseEntity.ok().build();
 			
 		} catch (Exception e) {
@@ -127,6 +128,15 @@ public class CartServiceImpl implements CartService {
 			return result;
 		}
 		return 0;
+	}
+
+
+	@Override
+	public void deleteCartitems(List<CartItemDto> cartInfoList, String token) {
+		Long memberNum = tService.getMemberNum(token);
+		for(CartItemDto cartItem : cartInfoList) {
+			itemRepo.deleteByIsbnAndCartMemberMemberNum(cartItem.getIsbn(), memberNum);
+		}
 	}
 
 }
